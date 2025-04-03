@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use App\Models\Seccion;
 use App\Http\Requests\StoreAlumnoRequest;
 use App\Http\Requests\UpdateAlumnoRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class AlumnoController extends Controller
 {
@@ -13,7 +16,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        //
+        return view('alumnos.alumno-index', ['alumnos' => Alumno::all(),]);
     }
 
     /**
@@ -37,7 +40,8 @@ class AlumnoController extends Controller
      */
     public function show(Alumno $alumno)
     {
-        //
+        $secciones = Seccion::all();
+        return view('alumnos.alumno-show', compact('alumno', 'secciones'));
     }
 
     /**
@@ -62,5 +66,11 @@ class AlumnoController extends Controller
     public function destroy(Alumno $alumno)
     {
         //
+    }
+
+    public function actualizarSeccionesAlumno(Request $request, Alumno $alumno)
+    {
+        $alumno->secciones()->sync($request->seccion_id);
+        return redirect()->route('alumno.show', $alumno);
     }
 }
