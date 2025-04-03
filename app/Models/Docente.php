@@ -17,4 +17,9 @@ class Docente extends Model
         'correo',
         'codigo',
     ];
+
+    public function secciones()
+    {
+        return $this->hasMany(Seccion::class);
+    }
 }

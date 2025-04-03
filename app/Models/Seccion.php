@@ -14,4 +14,9 @@ class Seccion extends Model
 
     protected $fillable = ['nombre', 'seccion', 'nrc'];
 
+    public function docente()
+    {
+        return $this->belongsTo(Docente::class);
+    }
+
 }
