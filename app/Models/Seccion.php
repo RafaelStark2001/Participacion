@@ -19,4 +19,9 @@ class Seccion extends Model
         return $this->belongsTo(Docente::class);
     }
 
+    public function alumnos()
+    {
+        return $this->belongsToMany(Alumno::class);
+    }
+
 }

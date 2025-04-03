@@ -11,4 +11,9 @@ class Alumno extends Model
     use HasFactory;
 
     protected $fillable = ['nombre', 'correo', 'codigo'];
+
+    public function secciones()
+    {
+        return $this->belongsToMany(Seccion::class);
+    }
 }
