@@ -17,7 +17,9 @@ class AlumnoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombre' => $this->faker->name(),
+            'correo' => $this->faker->unique()->safeEmail(),
+            'codigo' => $this->faker->unique()->numerify('#######'),
         ];
     }
 }

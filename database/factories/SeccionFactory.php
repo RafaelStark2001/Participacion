@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Docente;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class SeccionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'docente_id' => Docente::factory(),
+            'nombre' => $this->faker->sentence(),
+            'seccion' => $this->faker->numerify('D-##'),
+            'nrc' => $this->faker->unique()->numerify('#####'),
         ];
     }
 }
