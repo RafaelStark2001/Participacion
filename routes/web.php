@@ -16,7 +16,11 @@ Route::get('/', function () {
 
 Route::resource('docente', DocenteController::class);
 
-Route::resource('seccion', SeccionController::class);
+Route::post('seccion/{seccion}/actualizar', [SeccionController::class, 'actualizarAlumnosSeccion'])
+    ->name('seccion.actualizar-alumnos')
+    ->middleware(['auth']);
+
+Route::resource('seccion', SeccionController::class)->middleware(['auth']);
 
 Route::post('alumno/{alumno}/actualizar', [AlumnoController::class, 'actualizarSeccionesAlumno'])
     ->name('alumno.actualizar-secciones')
