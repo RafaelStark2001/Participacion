@@ -15,7 +15,7 @@
                     <tr>
                         <td><a href="{{ route('seccion.show', $seccion) }}">{{ $seccion->nombre }}</a></td>
                         <td>{{ $seccion->seccion }}</td>
-                        <td>{{ $seccion->docente_id }}</td>
+                        <td>{{ $seccion->docente->nombre }}</td>
                         <td>{{ $seccion->nrc }}</td>
                         <td>
                             @foreach ($seccion->alumnos as $alumno)

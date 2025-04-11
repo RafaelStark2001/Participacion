@@ -5,7 +5,7 @@
             <h1>{{ $seccion->nombre }} - {{ $seccion->seccion }}</h1>
 
             <ul>
-                <li>Docente: {{ $seccion->docente }}</li>
+                <li>Docente: {{ $seccion->docente->nombre }}</li>
                 <li>NRC: {{ $seccion->nrc }}</li>
             </ul>
             <hr>
